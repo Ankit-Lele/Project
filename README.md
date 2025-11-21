@@ -122,7 +122,7 @@ cd frontend
 npm test
 ```
 
-- Backend tests (if present)
+- Backend tests 
 
 ```bash
 cd backend
