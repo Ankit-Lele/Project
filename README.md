@@ -209,8 +209,3 @@ You may need to update the server configuration to serve the compiled frontend f
 - Add tests, run them, and ensure builds pass
 - Keep changes small and focused
 
----
-
-## License
-
-Add license info here (MIT recommended if you want open source)
