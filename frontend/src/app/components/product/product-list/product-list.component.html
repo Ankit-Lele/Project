@@ -1,25 +1,35 @@
-<div class="container mt-3">
-  <div class="d-flex mb-3">
-    <input type="text" class="form-control me-2" placeholder="Search..." [(ngModel)]="search" (input)="loadProducts()">
-    <button class="btn btn-primary" (click)="sort = sort === 'ASC' ? 'DESC' : 'ASC'; loadProducts()">Sort Price: {{ sort }}</button>
-  </div>
+<div class="mt-3">
+  <input [(ngModel)]="search" placeholder="Search product or category" (input)="loadProducts()" />
 
-  <table class="table table-bordered">
+  <table class="table table-bordered mt-2">
     <thead>
       <tr>
         <th>Name</th>
         <th>Price</th>
-        <th>Image</th>
+        <th>Category</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
-        <td><img [src]="product.image_url" width="50"></td>
+        <td>{{ categories.find(c => c.id === product.category_id)?.name }}</td>
+        <td>
+          <button (click)="editProduct(product)">Edit</button>
+          <button (click)="deleteProduct(product.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
 
-  <button class="btn btn-secondary" (click)="loadMore()" [disabled]="page >= totalPages">Load More</button>
+  <div *ngIf="selectedProduct" class="mt-3">
+    <h5>Edit Product</h5>
+    <input [(ngModel)]="selectedProduct.name" placeholder="Name" />
+    <input [(ngModel)]="selectedProduct.price" placeholder="Price" />
+    <select [(ngModel)]="selectedProduct.category_id">
+      <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+    </select>
+    <button (click)="updateProduct()">Update</button>
+  </div>
 </div>

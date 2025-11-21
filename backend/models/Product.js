@@ -41,7 +41,7 @@ const Product = sequelize.define(
   {
     tableName: 'products',
     timestamps: true,
-    createdAt: 'created_at',   // map to DB column
+    createdAt: 'created_at',   
     updatedAt: 'updated_at'
   }
 );

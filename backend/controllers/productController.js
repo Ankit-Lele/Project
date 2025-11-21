@@ -32,7 +32,6 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-// ----------------- Get Products -----------------
 // ----------------- Get Products (search by product & category) -----------------
 exports.getProducts = async (req, res) => {
   try {
