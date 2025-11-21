@@ -1,0 +1,239 @@
+{
+  "info": {
+    "name": "Fullstack Developer Assessment APIs",
+    "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+    "description": "Postman collection for User, Category, Product CRUD, Bulk Upload, and Report APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"pass123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5500/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5500/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5500/api/categories",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "categories"]
+            }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Electronics\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5500/api/categories/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "categories", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5500/api/categories/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "categories", "1"]
+            }
+          }
+        },
+        {
+          "name": "List Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5500/api/categories",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "categories"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "name", "value": "Product X" },
+                { "key": "price", "value": "150" },
+                { "key": "category_id", "value": "1" },
+                { "key": "image", "type": "file", "src": "path/to/image.jpg" }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:5500/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "name", "value": "Updated Product" },
+                { "key": "price", "value": "200" },
+                { "key": "category_id", "value": "2" }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:5500/api/products/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "products", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5500/api/products/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "products", "1"]
+            }
+          }
+        },
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5500/api/products?page=1&size=10&sort=ASC&search=",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "products"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "size", "value": "10" },
+                { "key": "sort", "value": "ASC" },
+                { "key": "search", "value": "" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bulk Upload Products",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": "path/to/products.csv" }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:5500/api/products/bulk-upload",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "products", "bulk-upload"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Download CSV Report",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5500/api/products/report",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5500",
+              "path": ["api", "products", "report"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

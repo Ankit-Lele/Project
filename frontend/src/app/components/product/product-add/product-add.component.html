@@ -1,0 +1,31 @@
+<div class="container mt-3">
+  <h3>Add Product</h3>
+
+  <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+
+  <!-- Single Product Form -->
+  <div class="mb-3">
+    <input type="text" class="form-control mb-2" placeholder="Name" [(ngModel)]="name">
+    <input type="number" class="form-control mb-2" placeholder="Price" [(ngModel)]="price">
+    <input type="number" class="form-control mb-2" placeholder="Category ID" [(ngModel)]="category_id">
+    <input type="file" class="form-control mb-2" (change)="onImageChange($event)">
+    <button class="btn btn-primary" (click)="addProduct()">Add Product</button>
+  </div>
+
+  <hr>
+
+  <!-- Bulk Upload -->
+  <div class="mb-3">
+    <h5>Bulk Upload</h5>
+    <input type="file" class="form-control mb-2" (change)="onFileChange($event)">
+    <button class="btn btn-secondary" (click)="bulkUpload()">Upload File</button>
+  </div>
+
+  <hr>
+
+  <!-- Download Report -->
+  <div class="mb-3">
+    <h5>Download Report</h5>
+    <button class="btn btn-success" (click)="downloadReport()">Download CSV</button>
+  </div>
+</div>
